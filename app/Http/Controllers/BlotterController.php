@@ -15,27 +15,19 @@ class BlotterController extends Controller
     public function rules($id)
     {
         return [
-            'reference' => 'required |string | max:60 | unique:blotters,reference,' . $id . ',id,deleted_at,NULL',
-            'complainant' => 'required | string | max:200',
-            'respondent' => 'required | string | max:200',
-            'incident_type' => 'required | string | max:60',
-            'date_report' => 'required | string | max:60',
-            'date_incident' => 'required | string | max:60',
+            'suspect' => 'required | string | max:60',
+            'victim' => 'required | string | max:60',
+            'reason' => 'required | string | max:200',
+            'datetime' => 'required | string | max:60',
             'place' => 'required | string | max:60',
-            'description' => 'required | string | max:120',
+            'fingerprint' => 'required | string | max:60',
         ];
     }
 
     public function index()
     {
-        $blotters = Blotter::select('blotters.*', 'residents.firstname as firstname', 'residents.middlename as middlename', 'residents.surname as surname',
-                                     'incident_types.incident_type as incident_type')
-        ->join('residents', 'residents.id', '=', 'blotters.complainant')
-        ->join('incident_types', 'incident_types.id', '=', 'blotters.incident_type')
-        ->get();
-        $residents = Resident::orderBy('id')->get();
-        $incident_types = IncidentType::orderBy('id')->get();
-        return view('businessDev.pages.transaction.blotter',compact('blotters', 'residents' , 'incident_types'));
+        $blotters = Blotter::orderBy('id')->get();
+        return view('businessDev.pages.transaction.blotter',compact('blotters'));
     }
 
     public function store(Request $request)
@@ -115,5 +107,11 @@ class BlotterController extends Controller
             ->addIndexColumn()
             ->make(true);
         }
+    }
+
+    public function blotterVerification()
+    {
+        $blotters = Blotter::orderBy('id')->get();
+        return view('businessDev.pages.cashier.blotter-verification',compact('blotters'));
     }
 }

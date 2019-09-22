@@ -141,9 +141,9 @@ class ResidentController extends Controller
         }
     }
 
-    public function fingerprint($id)
+    public function fingerPrint($id)
     {
-        $residents = Resident::where('id', $id)->get();
-        return redirect('businessDev.pages.general.biodata')->with(compact('residents'));
+        $residents = Resident::find($id)->first();
+        return view('businessDev.pages.general.biodata',compact('residents'));
     }
 }

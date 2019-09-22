@@ -73,6 +73,7 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'blotter'], functio
     Route::get          ('/update/{id}',                 'BlotterController@update'          )->name('reason_update');
     Route::get          ('/destroy/{id}',                'BlotterController@destroy'         )->name('reason_update');
     Route::get          ('/redraw',                      'BlotterController@redraw'          )->name('reason_update');
+    Route::get          ('/blotterVerification',                      'BlotterController@blotterVerification'          )->name('reason_update');
 });
 
 // INCIDENT TYPE CONTROLLER
@@ -113,9 +114,18 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'resident'], functi
     Route::get          ('/update/{id}',                 'ResidentController@update'          )->name('reason_update');
     Route::get          ('/destroy/{id}',                'ResidentController@destroy'         )->name('reason_update');
     Route::get          ('/redraw',                      'ResidentController@redraw'          )->name('reason_update');
-    Route::get          ('/fingerprint/{id}',            'ResidentController@fingerprint'          )->name('reason_update');
 });
 
+
+// biodata CONTROLLER
+Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'biodata'], function (){
+    Route::get          ('/{id}',                        'BiodataController@index'           )->name('reason');
+    Route::get          ('/fingerprint/{id}',            'BiodataController@fingerprint'     )->name('reason');
+    Route::get          ('/residentUpdate',              'BiodataController@residentUpdate'            )->name('reason');
+    Route::get          ('/update/{id}',                 'BiodataController@update'          )->name('reason_update');
+    Route::get          ('/destroy/{id}',                'BiodataController@destroy'         )->name('reason_update');
+    Route::get          ('/redraw',                      'BiodataController@redraw'          )->name('reason_update');
+});
 // KAGAWAD CONTROLLER
 Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'queue'], function (){
     Route::get          ('/',                            'QueueController@index'              )->name('reason');

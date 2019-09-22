@@ -9,7 +9,7 @@
       <!-- menu profile quick info -->
       <div class="profile clearfix">
         <div class="profile_pic">
-          <img src="{{asset('production/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+          <img src="{{asset('/images/require/user.png')}}" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
           <span>Welcome,</span>
@@ -62,6 +62,7 @@
                   <li><a href="{{ url('cashier') }}">Payment</a></li>
                   <li><a href="{{ url('receipt') }}">Receipt</a></li>
                   <li><a href="{{ url('transaction/clearance') }}">Barangay Clearance</a></li>
+                  <li><a href="{{ url('blotter/blotterVerification') }}">Blotter Verification</a></li>
                 </ul>
               </li>
             @endif

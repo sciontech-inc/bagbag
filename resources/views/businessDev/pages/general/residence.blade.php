@@ -32,7 +32,7 @@
                         <td>{{$resident->contact_no}}</td>
                         <td class="resident-edit action">
                             <div class="form-group" style="display:inline-flex">
-                                    <a class="btn btn-success btn-sm mr-1 view" title="View"  href={{url('resident/fingerprint/' . $resident->id)}}><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-success btn-sm mr-1 view" title="Activate Finger Print"  href={{url('biodata/' . $resident->id)}}><i class="fa fa-thumbs-up"></i></a>
                                     <a class="btn btn-success btn-sm mr-1 edit" title="Edit" data-toggle="modal" data-target=".add-resident" id={{$resident->id}}><i class="fa fa-edit"></i></a>
                                     <a class="btn btn-danger btn-sm delete-data" id={{$resident->id}} title="Delete"><i class="fa fa-trash"></i></a>
                             </div>
@@ -239,7 +239,7 @@
                 { data: function (data, type, dataToSet) {
                     return '<td class="generic-edit action">'+
                             '<div class="form-group" style="display:inline-flex">'+
-                                    '<a class="btn btn-success btn-sm mr-1 view" title="View" data-toggle="modal" data-target=".add-resident" id='+data.id+'><i class="fa fa-eye"></i></a>'+
+                                    '<a class="btn btn-success btn-sm mr-1 view" title="Activate Finger Print"  href="biodata/' + data.id + '"><i class="fa fa-thumbs-up"></i></a>'+
                                     '<a class="btn btn-success btn-sm mr-1 edit" title="Edit" data-toggle="modal" data-target=".add-resident" id='+data.id+'><i class="fa fa-edit"></i></a>'+
                                     '<a class="btn btn-danger btn-sm delete-data" id='+data.id+' title="Delete"><i class="fa fa-trash"></i></a>'+
                             '</div>'+

@@ -8,19 +8,16 @@
         </div>
         <div class="x_content">
               <div class="success-message"></div>
-              <button type="button" class="btn btn-primary pull-right add blotter-edit action" data-toggle="modal" data-target=".add-blotter"> Add Supp/Manu </button>
             <table id="blotter-datatable" class="table table-striped table-bordered">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Blotter ID</th>
-                    <th>Complainant</th>
-                    <th>Respondent</th>
-                    <th>Incident Type</th>
-                    <th>Reported Date</th>
-                    <th>Incident Date</th>
+                    <th>Suspect</th>
+                    <th>Victim</th>
+                    <th>Reason</th>
+                    <th>Date Time</th>
                     <th>Place</th>
-                    <th>Description</th>
+                    <th>Fingerprint</th>
                     <th class="blotter-edit action">Action</th>
                   </tr>
                 </thead>
@@ -28,19 +25,17 @@
                   @foreach ($blotters as $key => $blotter)
                       <tr>
                         <td>{{++$key}}</td>
-                        <td>{{$blotter->reference}}</td>
-                        <td>{{$blotter->firstname . ' ' . $blotter->middlename . ' ' . $blotter->surname }}</td>
-                        <td>{{$blotter->firstname . ' ' . $blotter->middlename . ' ' . $blotter->surname }}</td>
-                        <td>{{$blotter->incident_type}}</td>
-                        <td>{{$blotter->date_report}}</td>
-                        <td>{{$blotter->date_incident}}</td>
+                        <td>{{$blotter->suspect}}</td>
+                        <td>{{$blotter->victim . ' ' . $blotter->middlename . ' ' . $blotter->surname }}</td>
+                        <td>{{$blotter->reason . ' ' . $blotter->middlename . ' ' . $blotter->surname }}</td>
+                        <td>{{$blotter->datetime}}</td>
                         <td>{{$blotter->place}}</td>
-                        <td>{{$blotter->description}}</td>
+                        <td>{{$blotter->fingerprint}}</td>
                         <td class="blotter-edit action">
                             <div class="form-group" style="display:inline-flex">
                                     {{-- <a class="btn btn-success btn-sm mr-1 view" title="View" data-toggle="modal" data-target=".add-blotter" id={{$blotter->id}}><i class="fa fa-eye"></i></a> --}}
-                                    <a class="btn btn-success btn-sm mr-1 edit" title="Edit" data-toggle="modal" data-target=".add-blotter" id={{$blotter->id}}><i class="fa fa-edit"></i></a>
-                                    <a class="btn btn-danger btn-sm delete-data" id={{$blotter->id}} title="Delete"><i class="fa fa-trash"></i></a>
+                                    <!-- <a class="btn btn-success btn-sm mr-1 edit" title="Edit" data-toggle="modal" data-target=".add-blotter" id={{$blotter->id}}><i class="fa fa-edit"></i></a> -->
+                                    <!-- <a class="btn btn-danger btn-sm delete-data" id={{$blotter->id}} title="Delete"><i class="fa fa-trash"></i></a> -->
                             </div>
                         </td>
                       </tr>    
@@ -49,92 +44,6 @@
               </table>
         </div>
       </div>
-
-      <div class="modal fade add-blotter" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Add Blotter</h4>
-              </div>
-              <div class="modal-body">
-                <div data-parsley-validate class="form-horizontal form-label-left">
-                      <div class="error-message"></div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Blotter Number<span class="required"></label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="reference" name="reference" required="required" class="form-control col-md-7 col-xs-12" readonly>
-                          <input type="hidden" id="id" name="id" required="required" class="form-control col-md-7 col-xs-12" readonly>
-                        </div>
-                      </div>
-                        <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Complainant</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <select name="complainant" id="complainant" class="form-control col-md-7 col-xs-12">
-                                      <option disabled selected>Choose Complainant</option>
-                                      @foreach ($residents as $resident)
-                                          <option value="{{$resident->id}}">{{$resident->firstname . ' ' . $resident->middlename . ' ' . $resident->surname}}</option>
-                                      @endforeach
-                                  </select>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Respondent</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <select name="respondent" id="respondent" class="form-control col-md-7 col-xs-12">
-                                      <option disabled selected>Choose Respondent</option>
-                                      @foreach ($residents as $resident)
-                                          <option value="{{$resident->id}}">{{$resident->firstname . ' ' . $resident->middlename . ' ' . $resident->surname}}</option>
-                                      @endforeach
-                                  </select>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Type of Incident</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <select name="incident-type" id="incident-type" class="form-control col-md-7 col-xs-12">
-                                      <option disabled selected>Choose Respondent</option>
-                                      @foreach ($incident_types as $incident_type)
-                                          <option value="{{$incident_type->id}}">{{$incident_type->incident_type}}</option>
-                                      @endforeach
-                                  </select>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Blotter Date</label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="datetime-local" id="date-report" name="date-report" required="required" class="form-control col-md-7 col-xs-12">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Incident Happen</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="datetime-local" id="date-incident" name="date-incident" required="required" class="form-control col-md-7 col-xs-12" maxlength="200">
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Place</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="place" name="place" required="required" class="form-control col-md-7 col-xs-12" maxlength="200">
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="description" id="description" cols="30"  class="form-control col-md-7 col-xs-12" maxlength="200" rows="10"></textarea>
-                                </div>
-                        </div>
-                  </div>
-                      <br>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary blotter-button">Add</button>
-              </div>
-            </div>
-          </div>
-         </div>
 @endsection
 
 @section('scripts')

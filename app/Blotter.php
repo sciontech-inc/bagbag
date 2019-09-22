@@ -3,20 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blotter extends Model
 {
-    use SoftDeletes;
-    
+    // use SoftDeletes;
+    protected $table = 'blotter';
     protected $fillable = [
-        'reference',
-        'complainant',
-        'respondent',
-        'incident_type',
-        'date_report',
-        'date_incident',
+        'suspect',
+        'victim',
+        'reason',
+        'datetime',
         'place',
-        'description'
+        'fingerprint',
     ];
 }
