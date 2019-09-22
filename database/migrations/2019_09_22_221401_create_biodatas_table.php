@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlottersTable extends Migration
+class CreateBiodatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateBlottersTable extends Migration
      */
     public function up()
     {
-        Schema::create('blotters', function (Blueprint $table) {
+        Schema::create('biodatas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('suspect');
-            $table->string('victim');
-            $table->string('reason');
-            $table->string('datetime');
-            $table->string('place');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('mname');
+            $table->string('address');
+            $table->string('occupation');
+            $table->string('birthday');
+            $table->string('sex');
             $table->string('fingerprint');
-			$table->softDeletes();
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -33,6 +35,6 @@ class CreateBlottersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blotters');
+        Schema::dropIfExists('biodatas');
     }
 }

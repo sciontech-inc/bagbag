@@ -10,6 +10,7 @@ class Resident extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'biodata_fingerprint',
         'reference',
         'surname',
         'firstname',

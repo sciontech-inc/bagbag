@@ -140,4 +140,10 @@ class ResidentController extends Controller
             ->make(true);
         }
     }
+
+    public function fingerprint($id)
+    {
+        $residents = Resident::where('id', $id)->get();
+        return redirect('businessDev.pages.general.biodata')->with(compact('residents'));
+    }
 }

@@ -113,6 +113,7 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'resident'], functi
     Route::get          ('/update/{id}',                 'ResidentController@update'          )->name('reason_update');
     Route::get          ('/destroy/{id}',                'ResidentController@destroy'         )->name('reason_update');
     Route::get          ('/redraw',                      'ResidentController@redraw'          )->name('reason_update');
+    Route::get          ('/fingerprint/{id}',            'ResidentController@fingerprint'          )->name('reason_update');
 });
 
 // KAGAWAD CONTROLLER

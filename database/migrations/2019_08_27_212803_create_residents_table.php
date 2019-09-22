@@ -15,6 +15,7 @@ class CreateResidentsTable extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('biodata_fingerprint')->nullable();
             $table->string('reference');
             $table->string('surname');
             $table->string('firstname');
