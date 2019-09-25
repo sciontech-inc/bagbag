@@ -375,7 +375,7 @@
                 if (data.code === null) {
                     var codes = code + "-" + 0 + "-" + moment().format('YYYY');
                 } else {
-                    var codes = code + "-" + data.code.id + "-" + moment().format('YYYY');
+                    var codes = code + "-" + (data.code.id + 1) + "-" + moment().format('YYYY');
                 }
                 
                 var parts = codes.split("-");

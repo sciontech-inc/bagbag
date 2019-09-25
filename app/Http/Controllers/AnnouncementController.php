@@ -23,7 +23,7 @@ class AnnouncementController extends Controller
         
         $image = $request->file('image');
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $new_name);
+        $image->move(public_path('app/public/images'), $new_name);
 
         $announcement = new Announcement([
             'title' => $request->title,

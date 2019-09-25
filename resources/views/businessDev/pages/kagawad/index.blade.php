@@ -37,7 +37,7 @@
                     <td>{{$kagawad->about}}</td>
                     <td>{{$kagawad->address}}</td>
                     <td>{{$kagawad->contact}}</td>
-                    <td width="30px"><img  style="width:100% !important" src="{{asset('images/'.$kagawad->image)}}" alt=""></td>
+                    <td width="30px"><img  style="width:100% !important" src="{{asset('storage/images/'.$kagawad->image)}}" alt=""></td>
                     <td class="kagawad-edit action">
                         <div class="form-group" style="display:inline-flex">
                                 <a class="btn btn-success btn-sm mr-1 edit" title="Edit" data-toggle="modal" data-target=".add-kagawad" id={{$kagawad->id}}><i class="fa fa-edit"></i></a>

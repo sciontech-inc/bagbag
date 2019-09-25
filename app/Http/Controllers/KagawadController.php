@@ -33,7 +33,7 @@ class KagawadController extends Controller
 
         $image = $request->file('image');
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $new_name);
+        $image->move(public_path('app/public/images'), $new_name);
 
         $Kagawad = new Kagawad([
             'firstname' => $request->firstname,
