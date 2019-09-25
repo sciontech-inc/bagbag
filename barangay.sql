@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2019 at 07:56 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.8
+-- Generation Time: Sep 25, 2019 at 10:40 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -101,18 +101,19 @@ CREATE TABLE `blotter` (
   `reason` varchar(1000) NOT NULL,
   `datetime` varchar(500) NOT NULL,
   `place` varchar(500) NOT NULL,
-  `fingerprint` varchar(1000) NOT NULL
+  `fingerprint` varchar(1000) NOT NULL,
+  `deleted_at` varchar(200) DEFAULT NULL,
+  `updated_at` varchar(200) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `blotter`
 --
 
-INSERT INTO `blotter` (`id`, `suspect`, `victim`, `reason`, `datetime`, `place`, `fingerprint`) VALUES
-(5, 'Test1', 'asdas', 'asdasda', 'Wednesday, October 24, 2018', 'asdasdada', 'IW012K9B4F.fpt'),
-(13, 'john', 'maceh', 'Threat', 'Wednesday, 25 September 2019', 'STI NOVA', '841MEYQ22I.fpt'),
-(12, 'sdasdasdasd', 'ivan', 'threat', 'Tuesday, 24 September 2019', 'seminaryo', '63A7FH81MZ.fpt'),
-(11, 'ivan', 'rigel', 'snatching', 'Tuesday, 24 September 2019', 'Bagbag', 'LX1DTGZ9G5.fpt');
+INSERT INTO `blotter` (`id`, `suspect`, `victim`, `reason`, `datetime`, `place`, `fingerprint`, `deleted_at`, `updated_at`) VALUES
+(13, 'john', 'maceh', 'Threat', 'Wednesday, 25 September 2019', 'STI NOVA', '841MEYQ22I.fpt', NULL, '2019-09-26 02:46:23'),
+(12, 'sdasdasdasd', 'ivan', 'threat', 'Tuesday, 24 September 2019', 'seminaryo', '63A7FH81MZ.fpt', NULL, '2019-09-26 02:34:42'),
+(11, 'Ivan Josep', 'rigel', 'snatching', 'Tuesday, 24 September 2019', 'Bagbag', 'LX1DTGZ9G5.fpt', NULL, '2019-09-26 02:45:34');
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,14 @@ CREATE TABLE `certifications` (
 INSERT INTO `certifications` (`id`, `resident_id`, `purpose`, `image`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Businness', '1005486352.png', '2019-09-23 04:42:39', '2019-09-23 04:42:39'),
 (2, 4, 'Businness', '1638242715.jpg', '2019-09-25 06:17:47', '2019-09-25 06:17:47'),
-(3, 4, 'Business', '284319521.jpg', '2019-09-25 08:39:52', '2019-09-25 08:39:52');
+(3, 4, 'Business', '284319521.jpg', '2019-09-25 08:39:52', '2019-09-25 08:39:52'),
+(4, 4, 'test', '521983520.jpg', '2019-09-25 19:09:22', '2019-09-25 19:09:22'),
+(5, 4, 'test', '1452918403.jpg', '2019-09-25 19:13:15', '2019-09-25 19:13:15'),
+(6, 4, 'test', '1467601894.jpg', '2019-09-25 19:13:17', '2019-09-25 19:13:17'),
+(7, 4, 'test', '1053730938.jpg', '2019-09-25 19:13:19', '2019-09-25 19:13:19'),
+(8, 4, 'asdasd', '2097130208.png', '2019-09-25 19:13:32', '2019-09-25 19:13:32'),
+(9, 4, 'asd', '623353662.png', '2019-09-25 19:17:41', '2019-09-25 19:17:41'),
+(10, 4, 'test', '471232510.png', '2019-09-25 19:18:11', '2019-09-25 19:18:11');
 
 -- --------------------------------------------------------
 
@@ -725,7 +733,7 @@ ALTER TABLE `cashiers`
 -- AUTO_INCREMENT for table `certifications`
 --
 ALTER TABLE `certifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `clearances`
