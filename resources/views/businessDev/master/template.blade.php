@@ -15,7 +15,6 @@
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <link href="{{asset('css/print.css')}}" rel="stylesheet">
     <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-
     <style>
         .panel-body {
             padding: 0px !important;

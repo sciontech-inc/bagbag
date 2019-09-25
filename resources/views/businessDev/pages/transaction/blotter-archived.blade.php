@@ -3,7 +3,7 @@
 @section('content')
     <div class="x_panel">
         <div class="x_title">
-        <h2><i class="fa fa-align-left"></i> Blotter </h2>
+        <h2><i class="fa fa-align-left"></i> Blotter Archived</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -33,7 +33,7 @@
                         <td>{{$blotter->fingerprint}}</td>
                         <td class="blotter-edit action">
                             <div class="form-group" style="display:inline-flex">
-                                <a class="btn btn-danger btn-sm delete-data" id={{$blotter->id}} title="Delete"><i class="fa fa-trash"></i></a>
+                                <a class="btn btn-warning btn-sm delete-data" id={{$blotter->id}} title="Delete"><i class="fa fa-undo"></i></a>
                             </div>
                         </td>
                       </tr>    
@@ -150,7 +150,7 @@
     // AJAX DELETE DATA
     function delete_data(id){
         $.ajax({
-            url: '/blotter/destroy/' + id,
+            url: '/blotter/restore/' + id,
             method: 'get',
             data: {
                 blotter: $('input[name=blotter]').val(),
@@ -226,7 +226,7 @@
     });
 
     $('body').on('click', '.delete-data', function() {
-        var r = confirm("Are you sure you want to delete?");
+        var r = confirm("Are you sure you want to restore this blotter?");
         if (r == true) {
             delete_data(this.id);
         }

@@ -73,7 +73,9 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'blotter'], functio
     Route::get          ('/update/{id}',                 'BlotterController@update'          )->name('reason_update');
     Route::get          ('/destroy/{id}',                'BlotterController@destroy'         )->name('reason_update');
     Route::get          ('/redraw',                      'BlotterController@redraw'          )->name('reason_update');
-    Route::get          ('/blotterVerification',                      'BlotterController@blotterVerification'          )->name('reason_update');
+    Route::get          ('/blotterVerification',         'BlotterController@blotterVerification'          )->name('reason_update');
+    Route::get          ('/archived',                    'BlotterController@archived'         )->name('reason_update');
+    Route::get          ('/restore/{id}',                'BlotterController@restore'         )->name('reason_update');
 });
 
 // INCIDENT TYPE CONTROLLER
@@ -174,6 +176,13 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'transaction'], fun
     Route::get          ('/blotterCode',                 'GlobalController@blotterCode'            )->name('reason');
     Route::get          ('/queuingCode',                 'GlobalController@queuingCode'            )->name('reason');
     Route::get          ('/receiptNo',                   'GlobalController@receiptNo'            )->name('reason');
+});
+
+// TRANSACTION CONTROLLER
+Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'report'], function (){
+    Route::get          ('/resident',                   'ReportController@resident'           )->name('reason');
+    Route::get          ('/clearance',                  'ReportController@clearance'           )->name('reason');
+    Route::get          ('/receipt',                    'ReportController@receipt'           )->name('reason');
 });
 
 Route::get('/', function () {

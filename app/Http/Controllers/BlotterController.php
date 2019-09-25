@@ -26,7 +26,7 @@ class BlotterController extends Controller
 
     public function index()
     {
-        $blotters = Blotter::orderBy('id')->get();
+        $blotters = Blotter::where('deleted_at', NULL)->orderBy('id')->get();
         return view('businessDev.pages.transaction.blotter',compact('blotters'));
     }
 
@@ -88,10 +88,11 @@ class BlotterController extends Controller
 
     public function destroy($id)
     {
-        $blotter = Blotter::find($id);
-        $blotter->delete();
+        $blotter = Blotter::where('id', $id)->first();
+        $blotter->deleted_at = '1';
+        $blotter->update();
         
-        return response()->json(array('success' => true, 'Successfully Deleted!', $blotter), 200);
+        return redirect()->back()->with('success','Successfully Deleted');
     }
 
     public function redraw()
@@ -111,7 +112,22 @@ class BlotterController extends Controller
 
     public function blotterVerification()
     {
-        $blotters = Blotter::orderBy('id')->get();
+        $blotters = Blotter::where('deleted_at', NULL)->orderBy('id')->get();
         return view('businessDev.pages.cashier.blotter-verification',compact('blotters'));
+    }
+
+    public function archived()
+    {
+        $blotters = Blotter::where('deleted_at', 1)->orderBy('id')->get();
+        return view('businessDev.pages.transaction.blotter-archived',compact('blotters'));
+    }
+
+    public function restore($id)
+    {
+        $blotter = Blotter::where('id', $id)->first();
+        $blotter->deleted_at = NULL;
+        $blotter->update();
+        
+        return redirect()->back()->with('success','Successfully Restore');
     }
 }

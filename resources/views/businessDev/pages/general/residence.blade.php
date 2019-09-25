@@ -194,6 +194,7 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/af.js"></script>
   <script>
       $(function(){
     // VALIDATION DISPLAY
@@ -219,6 +220,16 @@
             datatable_draw();
             $('.modal').modal('toggle');
         }
+    }
+    function getAge(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        $('#age').val(age);
     }
     // REFRESH DATATABLE WITHOUT LOADING THE PAGE
     function datatable_draw() {
@@ -422,7 +433,11 @@
         $('.error-message, .success-message').empty();
         edit(this.id);
     });
-})
 
+    $("#birthday").change(function(){
+        var today = moment($('#birthday').val()).format('Y/MM/D');
+        getAge('"' + today + '"');
+    });
+})
   </script>
 @endsection
