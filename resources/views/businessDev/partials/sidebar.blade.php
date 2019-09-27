@@ -33,7 +33,7 @@
                     <li><a href="{{ url('resident') }}">Resident Information</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-bookmark"></i> Website <span class="fa fa-chevron-down"></span></a>
+                {{-- <li><a><i class="fa fa-bookmark"></i> Website <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{{ url('mission') }}">Mission & Vision</a></li>
                     <li><a href="{{ url('event') }}">Events</a></li>
@@ -41,7 +41,7 @@
                     <li><a href="{{ url('project') }}">Project</a></li>
                     <li><a href="{{ url('kagawad') }}">Brgy Official</a></li>
                   </ul>
-                </li>
+                </li> --}}
                 <li><a><i class="fa fa-cogs"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{{ url('blotter') }}">Blotter</a></li>
