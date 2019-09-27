@@ -66,11 +66,11 @@
                 </ul>
               </li>
             @endif
-            <li><a><i class="fa fa-bookmark"></i> Queue <span class="fa fa-chevron-down"></span></a>
+            {{-- <li><a><i class="fa fa-bookmark"></i> Queue <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="{{ url('queue') }}">Queue List</a></li>
               </ul>
-            </li>
+            </li> --}}
             @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Super Admin')
               <li><a><i class="fa fa-bookmark"></i> Archived <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
