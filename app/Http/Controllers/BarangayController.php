@@ -23,8 +23,8 @@ class BarangayController extends Controller
         $events = Event::orderBy('id')->get();
         $announcements = Announcement::orderBy('id')->get();
         $projects = Project::orderBy('id')->get();
-        $queues = QueueNumber::with('user')->where('date', Carbon::now()->format('m-d-Y'))->orderBy('id')->get();
-        $queue = QueueNumber::with('user')->where('status', 'Pending')->orderBy('created_at')->limit(1)->get();
+        $queues = QueueNumber::with('user')->orderBy('id')->get();
+        $queue = QueueNumber::with('user')->where('status', '0n-Queue')->orderBy('created_at')->limit(1)->get();
 
         return view('frontend.master.template',compact('mission','events','announcements','projects', 'queues', 'queue'));
     }
@@ -36,8 +36,8 @@ class BarangayController extends Controller
      */
     public function queue()
     {
-        $queues = QueueNumber::with('user')->where('date', Carbon::now()->format('m-d-Y'))->where('status', 'Pending')->orderBy('id')->get();
-        $queue = QueueNumber::with('user')->where('status', 'Pending')->orderBy('created_at')->limit(2)->get();
+        $queues = QueueNumber::with('user')->where('status', 'On-Queue')->orderBy('id')->get();
+        $queue = QueueNumber::with('user')->where('status', 'On-Queue')->orderBy('created_at')->limit(2)->get();
 
         return view('frontend.pages.queue',compact('queues', 'queue'));
     }

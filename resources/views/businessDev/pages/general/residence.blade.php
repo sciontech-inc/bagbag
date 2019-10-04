@@ -42,6 +42,7 @@
                 </tbody>
               </table>
         </div>
+        <h3>Total No. Of Residence : {{$totalResident}} </h3>
       </div>
 
       <div class="modal fade add-resident" tabindex="-1" role="dialog" aria-hidden="true">

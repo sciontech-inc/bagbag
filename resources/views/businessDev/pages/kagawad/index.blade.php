@@ -14,7 +14,7 @@
     </div>
     <div class="x_content">
         @include('businessDev.partials.flash-message')
-        <button type="button" class="btn btn-primary pull-right addGeneric" data-toggle="modal" data-target=".add-modal">Add Event</button>
+        <button type="button" class="btn btn-primary pull-right addGeneric" data-toggle="modal" data-target=".add-modal">Add Official</button>
         <table id="kagawad-datatable" class="table table-striped table-bordered">
             <thead>
               <tr>

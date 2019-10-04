@@ -33,7 +33,7 @@
                     <li><a href="{{ url('resident') }}">Resident Information</a></li>
                   </ul>
                 </li>
-                {{-- <li><a><i class="fa fa-bookmark"></i> Website <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-bookmark"></i> Website <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{{ url('mission') }}">Mission & Vision</a></li>
                     <li><a href="{{ url('event') }}">Events</a></li>
@@ -41,7 +41,7 @@
                     <li><a href="{{ url('project') }}">Project</a></li>
                     <li><a href="{{ url('kagawad') }}">Brgy Official</a></li>
                   </ul>
-                </li> --}}
+                </li>
                 <li><a><i class="fa fa-cogs"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{{ url('blotter') }}">Blotter</a></li>
@@ -66,11 +66,11 @@
                 </ul>
               </li>
             @endif
-            {{-- <li><a><i class="fa fa-bookmark"></i> Queue <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-bookmark"></i> Queue <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li><a href="{{ url('queue') }}">Queue List</a></li>
               </ul>
-            </li> --}}
+            </li>
             @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Super Admin')
               <li><a><i class="fa fa-bookmark"></i> Archived <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">

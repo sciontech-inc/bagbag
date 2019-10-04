@@ -10,7 +10,7 @@ class QueueController extends Controller
     public function index()
     {
         $queues = QueueNumber::with('user')->orderBy('id')->get();
-        $queue = QueueNumber::with('user')->where('status', 'Pending')->orderBy('created_at')->limit(1)->get();
+        $queue = QueueNumber::with('user')->where('status', '0n-Queue')->orderBy('created_at')->limit(1)->get();
         return view('businessDev.pages.queue.index',compact('queues', 'queue'));
     }
 

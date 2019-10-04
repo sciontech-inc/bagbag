@@ -40,7 +40,8 @@ class ResidentController extends Controller
     public function index()
     {
         $residents = Resident::orderBy('id')->get();
-        return view('businessDev.pages.general.residence',compact('residents'));
+        $totalResident = Resident::count();
+        return view('businessDev.pages.general.residence',compact('residents', 'totalResident'));
     }
 
     public function store(Request $request)

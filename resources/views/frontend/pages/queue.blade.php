@@ -107,7 +107,7 @@
                                 data: {
                                     queue_no: parts.join("-"),
                                     date: moment().format('MM-D-YYYY'),
-                                    status: 'Pending',
+                                    status: 'On-Queue',
                                 },
                                 success: function(data) {
                                     alert('Successfully get Queue Number !');
