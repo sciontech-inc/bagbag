@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 25, 2019 at 10:40 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Host: localhost
+-- Generation Time: Oct 11, 2019 at 08:48 AM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -102,6 +102,7 @@ CREATE TABLE `blotter` (
   `datetime` varchar(500) NOT NULL,
   `place` varchar(500) NOT NULL,
   `fingerprint` varchar(1000) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
   `deleted_at` varchar(200) DEFAULT NULL,
   `updated_at` varchar(200) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -110,10 +111,10 @@ CREATE TABLE `blotter` (
 -- Dumping data for table `blotter`
 --
 
-INSERT INTO `blotter` (`id`, `suspect`, `victim`, `reason`, `datetime`, `place`, `fingerprint`, `deleted_at`, `updated_at`) VALUES
-(13, 'john', 'maceh', 'Threat', 'Wednesday, 25 September 2019', 'STI NOVA', '841MEYQ22I.fpt', NULL, '2019-09-26 02:46:23'),
-(12, 'sdasdasdasd', 'ivan', 'threat', 'Tuesday, 24 September 2019', 'seminaryo', '63A7FH81MZ.fpt', NULL, '2019-09-26 02:34:42'),
-(11, 'Ivan Josep', 'rigel', 'snatching', 'Tuesday, 24 September 2019', 'Bagbag', 'LX1DTGZ9G5.fpt', NULL, '2019-09-26 02:45:34');
+INSERT INTO `blotter` (`id`, `suspect`, `victim`, `reason`, `datetime`, `place`, `fingerprint`, `description`, `deleted_at`, `updated_at`) VALUES
+(13, 'john', 'maceh', 'Threat', 'Wednesday, 25 September 2019', 'STI NOVA', '841MEYQ22I.fpt', 'asdasdasd', '1', '2019-10-11 10:18:27'),
+(12, 'sdasdasdasd', 'ivan', 'threat', 'Tuesday, 24 September 2019', 'seminaryo', '63A7FH81MZ.fpt', 'tryasdasdasd', NULL, '2019-10-11 10:24:13'),
+(11, 'Ivan Josep', 'rigel', 'snatching', 'Tuesday, 24 September 2019', 'Bagbag', 'LX1DTGZ9G5.fpt', 'sadasd', NULL, '2019-10-11 10:24:32');
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,18 @@ INSERT INTO `cashiers` (`id`, `receipt_no`, `resident`, `tin`, `contact`, `addre
 (3, '000002', 'cess dela', '000000000', '09055171321', 'Barangay Bagbag', '5', NULL, 0, 100, 0, 'Completed', '2019-09-23 08:38:05', '2019-09-23 08:38:05'),
 (4, '000003', 'cess', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 0, 0, 'Completed', '2019-09-25 05:39:16', '2019-09-25 05:39:16'),
 (5, '000004', 'ivan', '000000000', '09055171321', 'Barangay Bagbag', '10', NULL, 0, 100, 0, 'Completed', '2019-09-25 05:41:56', '2019-09-25 05:41:56'),
-(6, '000005', 'ivan', '000000000', '09055171321', 'Barangay Bagbag', '1', NULL, 0, 100, 0, 'Completed', '2019-09-25 08:40:57', '2019-09-25 08:40:57');
+(6, '000005', 'ivan', '000000000', '09055171321', 'Barangay Bagbag', '1', NULL, 0, 100, 0, 'Completed', '2019-09-25 08:40:57', '2019-09-25 08:40:57'),
+(7, '000006', 'asdasd', '000000000', '09055171321', 'Barangay Bagbag', '2', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:16:50', '2019-10-11 03:16:50'),
+(8, '000007', 'asd', '000000000', '09055171321', 'Barangay Bagbag', '20', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:23:00', '2019-10-11 03:23:00'),
+(9, '000008', 'asd', '000000000', '09055171321', 'Barangay Bagbag', 'Senior', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:27:32', '2019-10-11 03:27:32'),
+(10, '000009', 'asd', '000000000', '09055171321', 'Barangay Bagbag', 'PWD', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:29:38', '2019-10-11 03:29:38'),
+(11, '000010', 'asdas', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:41:23', '2019-10-11 03:41:23'),
+(12, '000011', 'asdasd', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:42:52', '2019-10-11 03:42:52'),
+(13, '000012', 'asd', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 1000, 0, 'Completed', '2019-10-11 03:43:31', '2019-10-11 03:43:31'),
+(14, '000013', 'ASD', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 0, 0, 'Completed', '2019-10-11 03:44:52', '2019-10-11 03:44:52'),
+(15, '000014', 'asd', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 0, 0, 'Completed', '2019-10-11 03:46:08', '2019-10-11 03:46:08'),
+(16, '000015', 'asd', '000000000', '09055171321', 'Barangay Bagbag', '0', NULL, 0, 0, 0, 'Completed', '2019-10-11 03:46:22', '2019-10-11 03:46:22'),
+(17, '000016', 'asd', '000000000', '09055171321', 'Barangay Bagbag', '400', NULL, 0, 100, 0, 'Completed', '2019-10-11 03:51:01', '2019-10-11 03:51:01');
 
 -- --------------------------------------------------------
 
@@ -184,22 +196,6 @@ CREATE TABLE `certifications` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `certifications`
---
-
-INSERT INTO `certifications` (`id`, `resident_id`, `purpose`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Businness', '1005486352.png', '2019-09-23 04:42:39', '2019-09-23 04:42:39'),
-(2, 4, 'Businness', '1638242715.jpg', '2019-09-25 06:17:47', '2019-09-25 06:17:47'),
-(3, 4, 'Business', '284319521.jpg', '2019-09-25 08:39:52', '2019-09-25 08:39:52'),
-(4, 4, 'test', '521983520.jpg', '2019-09-25 19:09:22', '2019-09-25 19:09:22'),
-(5, 4, 'test', '1452918403.jpg', '2019-09-25 19:13:15', '2019-09-25 19:13:15'),
-(6, 4, 'test', '1467601894.jpg', '2019-09-25 19:13:17', '2019-09-25 19:13:17'),
-(7, 4, 'test', '1053730938.jpg', '2019-09-25 19:13:19', '2019-09-25 19:13:19'),
-(8, 4, 'asdasd', '2097130208.png', '2019-09-25 19:13:32', '2019-09-25 19:13:32'),
-(9, 4, 'asd', '623353662.png', '2019-09-25 19:17:41', '2019-09-25 19:17:41'),
-(10, 4, 'test', '471232510.png', '2019-09-25 19:18:11', '2019-09-25 19:18:11');
-
 -- --------------------------------------------------------
 
 --
@@ -208,6 +204,20 @@ INSERT INTO `certifications` (`id`, `resident_id`, `purpose`, `image`, `created_
 
 CREATE TABLE `clearances` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `firestation` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `barangay` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -256,6 +266,28 @@ CREATE TABLE `incident_types` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `item` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `item`, `amount`, `created_at`, `updated_at`) VALUES
+(2, 'Cedula', '1000', '2019-10-11 03:06:15', '2019-10-11 03:06:15'),
+(3, 'Barangay Clearance', '200', '2019-10-11 03:06:24', '2019-10-11 03:06:24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kagawads`
 --
 
@@ -282,33 +314,34 @@ CREATE TABLE `kagawads` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(38, '2014_10_12_000000_create_users_table', 2),
-(39, '2014_10_12_100000_create_password_resets_table', 2),
-(40, '2019_08_10_113615_create_missions_table', 2),
-(41, '2019_08_11_105947_create_events_table', 2),
-(42, '2019_08_12_054659_create_announcements_table', 2),
-(43, '2019_08_12_151346_create_projects_table', 2),
-(44, '2019_08_25_230300_create_incident_types_table', 2),
-(45, '2019_08_26_005411_create_kagawads_table', 2),
-(46, '2019_08_26_011630_create_positions_table', 2),
-(47, '2019_08_27_201821_create_cashiers_table', 2),
-(48, '2019_08_27_202607_create_clearances_table', 2),
-(49, '2019_08_27_212803_create_residents_table', 2),
-(50, '2019_08_27_223831_create_blotters_table', 2),
-(51, '2019_09_09_142212_create_transactions_table', 2),
-(20, '2019_09_22_221401_create_biodatas_table', 1),
-(52, '2019_09_09_184110_create_receipts_table', 2),
-(53, '2019_09_16_004908_create_queue_numbers_table', 2),
-(54, '2019_09_19_113346_create_certifications_table', 2);
+(44, '2014_10_12_000000_create_users_table', 1),
+(45, '2014_10_12_100000_create_password_resets_table', 1),
+(46, '2019_08_10_113615_create_missions_table', 1),
+(47, '2019_08_11_105947_create_events_table', 1),
+(48, '2019_08_12_054659_create_announcements_table', 1),
+(49, '2019_08_12_151346_create_projects_table', 1),
+(50, '2019_08_25_230300_create_incident_types_table', 1),
+(51, '2019_08_26_005411_create_kagawads_table', 1),
+(52, '2019_08_26_011630_create_positions_table', 1),
+(53, '2019_08_27_201821_create_cashiers_table', 1),
+(54, '2019_08_27_202607_create_clearances_table', 1),
+(55, '2019_08_27_212803_create_residents_table', 1),
+(56, '2019_08_27_223831_create_blotters_table', 1),
+(57, '2019_09_09_142212_create_transactions_table', 1),
+(58, '2019_09_09_184110_create_receipts_table', 1),
+(59, '2019_09_16_004908_create_queue_numbers_table', 1),
+(60, '2019_09_19_113346_create_certifications_table', 1),
+(61, '2019_10_10_230332_create_contacts_table', 2),
+(62, '2019_10_11_104045_create_items_table', 2);
 
 -- --------------------------------------------------------
 
@@ -399,6 +432,13 @@ CREATE TABLE `queue_numbers` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `queue_numbers`
+--
+
+INSERT INTO `queue_numbers` (`id`, `queue_no`, `date`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'QN-00001-10-10', '10-10-2019', 'On-Queue', 1, '2019-10-10 14:45:56', '2019-10-10 14:45:56');
+
 -- --------------------------------------------------------
 
 --
@@ -459,13 +499,7 @@ CREATE TABLE `residents` (
 --
 
 INSERT INTO `residents` (`id`, `biodata_fingerprint`, `reference`, `surname`, `firstname`, `middlename`, `nickname`, `resident_date`, `citizenship`, `gender`, `civil_status`, `birthday`, `age`, `birthplace`, `contact_no`, `current_address`, `other_address`, `educational`, `occupation`, `card_presented`, `email`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'R-0000001-2019', 'llagas', 'Princess', 'lauron', 'cess', '1997-09-30', 'sdgsa', 'female', 'Single', '1997-09-29', '22', 'manila', '09533245342', 'gdggs', 'caloocan', 'college level', 'na', 'sgag', 'cess@gmail.com', NULL, '2019-09-23 04:31:46', '2019-09-23 04:31:46'),
-(2, NULL, 'R-0000002-2019', 'asssd', 'asd', 'asd', 'asd', '2019-09-03', 'asdasd', 'male', 'Widowed', '2019-09-23', '23', 'asd', '232323', 'asdasd', 'asd', 'asd', 'asd', 'asd', 'asdasd@gmail.com', NULL, '2019-09-23 09:21:14', '2019-09-23 09:21:14'),
-(3, NULL, 'R-0000003-2019', 'asdas', 'asd', 'asd', 'asd', '2008-01-28', 'asd', 'male', 'Widowed', '2019-11-29', '23', 'Quezon City', '11111111111', 'bagbag', NULL, 'asd', 'asd', 'asd', 'asd@yahoo.com', NULL, '2019-09-23 09:23:26', '2019-09-23 09:23:26'),
-(4, NULL, 'R-0000004-2019', 'Josep', 'Ivan', 'Cando', 'van', '1999-01-25', 'Filipino', 'male', 'Widowed', '2009-11-29', '23', 'Quezon Cit', '09216442268', 'Bagbag', NULL, 'College', 'None', 'Voter\'s ID', 'ivan_923@yahoo.com', NULL, '2019-09-23 09:32:04', '2019-09-23 09:32:04'),
-(5, NULL, 'R-0000005-2019', 'cagande', 'rigel ken', 'maas', 'gel', '2010-05-04', 'Filipino', 'male', 'Married', '2019-12-31', '21', 'Quezon City', '09216442268', 'Bagbag', NULL, 'College', 'None', 'Voter\'s ID', 'rigel@yahoo.com', NULL, '2019-09-23 09:38:15', '2019-09-23 09:38:15'),
-(6, NULL, 'R-0000006-2019', 'asdsdasd', 'asdasd', 'asdasd', 'asdasd', '2019-12-31', 'Filipino', 'male', 'Married', '1997-11-30', '23', 'Quezon City', '09216442268', 'bagbag', NULL, 'College', 'None', 'voter\'s id', 'asd@gmail.com', NULL, '2019-09-25 06:12:06', '2019-09-25 06:12:06'),
-(7, NULL, 'R-0000007-2019', 'Guardian', 'John', 'Llanderal', 'john', '1998-09-09', 'Filipino', 'male', 'Single', '1958-01-01', '24', 'Quezon City', '22222222222', 'Bagbag', NULL, 'College', 'STI Professor', 'Voter\'s ID', 'guardian@yahoo.com', NULL, '2019-09-25 08:35:03', '2019-09-25 08:35:03');
+(1, NULL, 'R-0000001-2019', 'asd', 'asd', 'asd', 'asd', '2019-10-10', 'asd', 'male', 'Separated', '2019-10-10', '23', 'sdasd', '213123', '2323 asdasd asdasd asdasd', 'asdas', 'asdasd', 'asd', 'asdasd', 'asdasdasds23@gmail.com', NULL, '2019-10-10 15:58:30', '2019-10-10 15:58:30');
 
 -- --------------------------------------------------------
 
@@ -496,7 +530,19 @@ INSERT INTO `transactions` (`id`, `cashier_id`, `item`, `quantity`, `price`, `to
 (5, 4, 'Cedula', '1', '53', '53', '2019-09-25 05:39:16', '2019-09-25 05:39:16'),
 (6, 4, 'Clearance', '1', '50', '50', '2019-09-25 05:40:21', '2019-09-25 05:40:21'),
 (7, 5, 'Clearance', '1', '53', '53', '2019-09-25 05:41:56', '2019-09-25 05:41:56'),
-(8, 6, 'Cedula', '1', '53', '53', '2019-09-25 08:40:57', '2019-09-25 08:40:57');
+(8, 6, 'Cedula', '1', '53', '53', '2019-09-25 08:40:57', '2019-09-25 08:40:57'),
+(9, 7, 'Cedula', '23', '1000', '23000', '2019-10-11 03:16:50', '2019-10-11 03:16:50'),
+(10, 8, 'Cedula', '23', '1000', '23000', '2019-10-11 03:23:00', '2019-10-11 03:23:00'),
+(11, 9, 'Cedula', '23', '1000', '23000', '2019-10-11 03:27:32', '2019-10-11 03:27:32'),
+(12, 10, 'Barangay Clearance', '2', '200', '400', '2019-10-11 03:29:38', '2019-10-11 03:29:38'),
+(13, 11, 'Cedula', '23', '1000', '23000', '2019-10-11 03:41:23', '2019-10-11 03:41:23'),
+(14, 12, 'Cedula', '2', '1000', '2000', '2019-10-11 03:42:52', '2019-10-11 03:42:52'),
+(15, 13, 'Cedula', '23', '1000', '23000', '2019-10-11 03:43:31', '2019-10-11 03:43:31'),
+(16, 14, 'Cedula', '2', '1000', '2000', '2019-10-11 03:44:52', '2019-10-11 03:44:52'),
+(17, 14, 'Cedula', '2', '1000', '2000', '2019-10-11 03:45:49', '2019-10-11 03:45:49'),
+(18, 15, 'Cedula', '2', '1000', '2000', '2019-10-11 03:46:08', '2019-10-11 03:46:08'),
+(19, 16, 'Cedula', '2', '1000', '2000', '2019-10-11 03:46:22', '2019-10-11 03:46:22'),
+(20, 17, 'Cedula', '2', '1000', '2000', '2019-10-11 03:51:01', '2019-10-11 03:51:01');
 
 -- --------------------------------------------------------
 
@@ -546,8 +592,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `firstname`, `middlename`, `surname`, `email`, `email_verified_at`, `password`, `role`, `deleted_at`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admininistrator', '', '', 'admin@gmail.com', NULL, '$2y$10$mGVC8yPZ1V80w6/b6we2WOfvwV7ly8QB/YbMa6IIFe11Sr81jgulO', 'Super Admin', NULL, NULL, NULL, NULL),
-(2, 'Princess', 'lauron', 'llagas', 'cess@gmail.com', NULL, '$2y$10$eOkoi4QxCCxrC6UvHWqCy.CQK8Vi7a7uVi832ovxftMuqm6tlDI/u', 'User', NULL, NULL, '2019-09-23 04:31:47', '2019-09-23 04:31:47'),
-(3, 'ivan', 'cando', 'josep', 'ivan_923@yahoo.com', NULL, '$2y$10$DAk3t3LCSr.fonaSHevlKO9lZYd1fO2isE3aGFcD2lwUXkwGSJiHy', 'Cashier', NULL, NULL, '2019-09-23 08:36:40', '2019-09-23 08:36:40');
+(2, 'asd', 'asd', 'asd', 'asdasdasds23@gmail.com', NULL, '$2y$10$JiOhs3bK/h4dONif4BjlsOKvlY1qhQkRqSTMUaOE4RzuWibrGFOri', 'User', NULL, NULL, '2019-10-10 15:58:30', '2019-10-10 15:58:30');
 
 --
 -- Indexes for dumped tables
@@ -603,6 +648,12 @@ ALTER TABLE `clearances`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -612,6 +663,12 @@ ALTER TABLE `events`
 -- Indexes for table `incident_types`
 --
 ALTER TABLE `incident_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -677,12 +734,6 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_cashier_id_foreign` (`cashier_id`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -700,24 +751,6 @@ ALTER TABLE `announcements`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `biodata`
---
-ALTER TABLE `biodata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `biodatas`
---
-ALTER TABLE `biodatas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `blotter`
---
-ALTER TABLE `blotter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
 -- AUTO_INCREMENT for table `blotters`
 --
 ALTER TABLE `blotters`
@@ -727,18 +760,24 @@ ALTER TABLE `blotters`
 -- AUTO_INCREMENT for table `cashiers`
 --
 ALTER TABLE `cashiers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `certifications`
 --
 ALTER TABLE `certifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `clearances`
 --
 ALTER TABLE `clearances`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -754,6 +793,12 @@ ALTER TABLE `incident_types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `kagawads`
 --
 ALTER TABLE `kagawads`
@@ -763,7 +808,7 @@ ALTER TABLE `kagawads`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `missions`
@@ -787,7 +832,7 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT for table `queue_numbers`
 --
 ALTER TABLE `queue_numbers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `receipts`
@@ -799,25 +844,19 @@ ALTER TABLE `receipts`
 -- AUTO_INCREMENT for table `residents`
 --
 ALTER TABLE `residents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
