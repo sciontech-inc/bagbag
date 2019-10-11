@@ -146,16 +146,49 @@
                                 @enderror
                         </div>
                         <div class="form-group row">
-                                <label class="col-md-4 col-form-label text-md-right">Current Address</label>
+                                <label class="col-md-4 col-form-label text-md-right"># / Blck</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-sm-6 col-xs-12 ">
-                                    <input type="text" id="current_address" name="current_address" class="form-control @error('current_address') is-invalid @enderror" value="{{ old('current_address') }}" maxlength="200">
+                                    <input type="text" id="number" name="number" class="form-control @error('number') is-invalid @enderror" value="{{ old('number') }}" maxlength="200">
                                 </div>
-                                @error('current_address')
+                                @error('number')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">Street</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-sm-6 col-xs-12 ">
+                                <input type="text" id="street" name="street" class="form-control @error('street') is-invalid @enderror" value="{{ old('street') }}" maxlength="200">
+                            </div>
+                            @error('street')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">Barangay</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-sm-6 col-xs-12 ">
+                                    <input type="text" id="barangay" name="barangay" class="form-control @error('barangay') is-invalid @enderror" value="{{ old('barangay') }}" maxlength="200">
+                                </div>
+                                @error('barangay')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">City</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-sm-6 col-xs-12 ">
+                                <input type="text" id="city" name="city" class="form-control @error('city') is-invalid @enderror" value="{{ old('city') }}" maxlength="200">
+                            </div>
+                            @error('city')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
                         <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Other Address <small>(optional)</small></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-sm-6 col-xs-12 ">

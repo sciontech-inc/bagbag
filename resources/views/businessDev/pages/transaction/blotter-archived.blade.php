@@ -18,6 +18,7 @@
                     <th>Date Time</th>
                     <th>Place</th>
                     <th>Fingerprint</th>
+                    <th>Description</th>
                     <th class="blotter-edit action">Action</th>
                   </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{$blotter->datetime}}</td>
                         <td>{{$blotter->place}}</td>
                         <td>{{$blotter->fingerprint}}</td>
+                        <td>{{$blotter->description}}</td>
                         <td class="blotter-edit action">
                             <div class="form-group" style="display:inline-flex">
                                 <a class="btn btn-warning btn-sm delete-data" id={{$blotter->id}} title="Delete"><i class="fa fa-undo"></i></a>
@@ -42,6 +44,31 @@
               </table>
         </div>
       </div>
+      <div class="modal fade add-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Reason to Retrieved</h4>
+            </div>
+            <div class="modal-body">
+                              <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Description<span class="required"></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <input type="hidden" id="id" name="id" required="required" class="form-control col-md-7 col-xs-12" maxlength="180">
+                                  <input type="text" id="description" name="description" required="required" class="form-control col-md-7 col-xs-12" maxlength="180">
+                                </div>
+                                <br>
+                              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary description-button">Submit</button>
+            </div>
+          </div>
+        </div>
+       </div>
 @endsection
 
 @section('scripts')
@@ -148,12 +175,13 @@
         });
     }
     // AJAX DELETE DATA
-    function delete_data(id){
+    function delete_data(id, description){
         $.ajax({
             url: '/blotter/restore/' + id,
             method: 'get',
             data: {
                 blotter: $('input[name=blotter]').val(),
+                description: description
             },
             success: function (data) {
                 location.reload();
@@ -226,11 +254,16 @@
     });
 
     $('body').on('click', '.delete-data', function() {
-        var r = confirm("Are you sure you want to restore this blotter?");
+        var r = confirm("Are you sure you want to retrieved?");
         if (r == true) {
-            delete_data(this.id);
+            $('.add-modal').modal('show');
+            $('#id').val(this.id);
         }
     });
+
+    $('.description-button').click(function() {
+        delete_data($('#id').val(), $('#description').val());
+    })
 
     $('body').on('click', '.update-data', function() {
         update();

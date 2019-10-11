@@ -86,10 +86,11 @@ class BlotterController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $blotter = Blotter::where('id', $id)->first();
         $blotter->deleted_at = '1';
+        $blotter->description = $request->description;
         $blotter->update();
         
         return redirect()->back()->with('success','Successfully Deleted');
@@ -122,10 +123,11 @@ class BlotterController extends Controller
         return view('businessDev.pages.transaction.blotter-archived',compact('blotters'));
     }
 
-    public function restore($id)
+    public function restore(Request $request, $id)
     {
         $blotter = Blotter::where('id', $id)->first();
         $blotter->deleted_at = NULL;
+        $blotter->description = $request->description;
         $blotter->update();
         
         return redirect()->back()->with('success','Successfully Restore');

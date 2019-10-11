@@ -147,10 +147,28 @@
                                 </div>
                         </div>
                         <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Current Address</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"># / blck</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input type="text" id="current-address" name="current-address" class="form-control col-md-7 col-xs-12" maxlength="200">
+                                  <input type="text" id="number" name="number" class="form-control col-md-7 col-xs-12" maxlength="200">
                                 </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Street</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="street" name="street" class="form-control col-md-7 col-xs-12" maxlength="200">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Barangay</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="barangay" name="barangay" class="form-control col-md-7 col-xs-12" maxlength="200">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">City</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="city" name="city" class="form-control col-md-7 col-xs-12" maxlength="200">
+                          </div>
                         </div>
                         <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Other Address <small>(optional)</small></label>
@@ -283,7 +301,10 @@
                 age: $('#age').val(),
                 birthplace: $('#birthplace').val(),
                 contact_no: $('#contact-no').val(),
-                current_address: $('#current-address').val(),
+                number: $('#number').val(),
+                street: $('#street').val(),
+                barangay: $('#barangay').val(),
+                city: $('#city').val(),
                 other_address: $('#other-address').val(),
                 educational: $('#educational').val(),
                 occupation: $('#occupation').val(),
@@ -314,7 +335,10 @@
                 age: $('#age').val(),
                 birthplace: $('#birthplace').val(),
                 contact_no: $('#contact-no').val(),
-                current_address: $('#current-address').val(),
+                number: $('#number').val(),
+                street: $('#street').val(),
+                barangay: $('#barangay').val(),
+                city: $('#city').val(),
                 other_address: $('#other-address').val(),
                 educational: $('#educational').val(),
                 occupation: $('#occupation').val(),

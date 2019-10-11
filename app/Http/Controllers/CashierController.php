@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Cashier;
 use App\Transaction;
 use App\Receipt;
+use App\Item;
 use App\User;
 use Auth;
 use Validator;
@@ -24,6 +25,7 @@ class CashierController extends Controller
             'tin' => 'required | max:60',
             'resident' => 'required | max:60',
             'discount' => 'max:10',
+            'discount_type' => 'max:10',
             'sub_total' => 'max:10',
             'total_amount' => 'max:15',
             'pay_amount' => 'max:15',
@@ -39,10 +41,11 @@ class CashierController extends Controller
     public function index()
     {
         $cashiers = Cashier::orderBy('id')->get();
+        $items = Item::orderBy('id')->get();
         $receipt = Receipt::first();
         $residents = User::where('role', 'User')->orderBy('id')->get();
 
-        return view('businessDev.pages.cashier.index',compact('cashiers', 'receipt', 'residents'));
+        return view('businessDev.pages.cashier.index',compact('cashiers', 'receipt', 'residents', 'items'));
     }
 
     public function store(Request $request)
@@ -93,6 +96,12 @@ class CashierController extends Controller
                 // Computation
                 $total = Transaction::where('cashier_id', $cashier->id)->get();
                 $total_payment = $total->sum('total');
+
+                if ($request->discount_type == 'PWD' || $request->discount_type == 'SENIOR') {
+                    $discount = Cashier::where('id', $cashier->id)->firstOrFail();
+                    $discount->discount = $total_payment * (.20);
+                    $discount->save();
+                }
                 return response()->json(array('success' => true, 'Successfully Added', $cashier, 'total_amount' => $total_payment),200);
             }
     }
@@ -101,6 +110,12 @@ class CashierController extends Controller
     {
         $cashiers = Cashier::where('id',$id)->orderBy('id')->firstOrFail();
         return response()->json(compact('cashiers'));
+    }
+
+    public function item($id)
+    {
+        $item = Item::where('item',$id)->orderBy('id')->firstOrFail();
+        return response()->json(compact('item'));
     }
 
     public function update(Request $request, $id)
@@ -200,7 +215,7 @@ class CashierController extends Controller
                 $printer->feed(2);
                 $printer->setJustification(Printer::JUSTIFY_LEFT);
                 $printer->text("Sub Total : Php. " . $sub_total . "\n");
-                $printer->text("Discount : Php. " . $record->discount . "\n");
+                $printer->text("Discount : Php. " . $record->discount . "%\n");
                 $printer->text("Cash : Php. " . $record->pay_amount . "\n");
                 $printer->text("Change : Php. " . (($record->pay_amount -  $sub_total) + ($record->discount))  . "\n");
 

@@ -25,10 +25,8 @@
                     </div>
                 </div>
             @empty
-                <h4 class="text-center" style="color:orange">NO ANNOUNCEMENT!</h4>
+                <h4 class="text-center" style="color:orange">NO PROJECTS!</h4>
             @endforelse
-            
-
         </div>
     </div>
 </section>

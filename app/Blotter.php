@@ -16,6 +16,7 @@ class Blotter extends Model
         'datetime',
         'place',
         'fingerprint',
+        'description',
         'deleted_at'
     ];
 }

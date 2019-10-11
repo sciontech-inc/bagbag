@@ -28,7 +28,10 @@ class ResidentController extends Controller
             'age' => 'required | max:60',
             'birthplace' => 'required | string | max:60',
             'contact_no' => 'required | max:60',
-            'current_address' => 'required | string | max:180',
+            'number' => 'required | string | max:180',
+            'street' => 'required | string | max:180',
+            'barangay' => 'required | string | max:180',
+            'city' => 'required | string | max:180',
             'other_address' =>  'max:180',
             'educational' => 'required | string | max:60',
             'occupation' => 'required | string | max:60',
@@ -69,7 +72,7 @@ class ResidentController extends Controller
                     'age' => $request->age,
                     'birthplace' => $request->birthplace,
                     'contact_no' => $request->contact_no,
-                    'current_address' => $request->current_address,
+                    'current_address' => $request->number . ' ' . $request->street . ' ' . $request->barangay . ' ' . $request->city,
                     'other_address' => $request->other_address,
                     'educational' => $request->educational,
                     'occupation' => $request->occupation,
@@ -113,7 +116,7 @@ class ResidentController extends Controller
             $resident->age = $request->age;
             $resident->birthplace = $request->birthplace;
             $resident->contact_no = $request->contact_no;
-            $resident->current_address = $request->current_address;
+            $resident->current_address = $request->number . ' ' . $request->street . ' ' . $request->barangay . ' ' . $request->city;
             $resident->other_address = $request->other_address;
             $resident->educational = $request->educational;
             $resident->occupation = $request->occupation;

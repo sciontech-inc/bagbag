@@ -47,6 +47,15 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'event'], function 
     Route::get          ('/destroy/{id}',                'EventController@destroy'                )->name('reason_update');
 });
 
+// ITEM CONTROLLER
+Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'item'], function (){
+    Route::get          ('/',                            'ItemController@index'                  )->name('reason');
+    Route::post         ('/save',                        'ItemController@store'                  )->name('reason');
+    Route::get          ('/edit/{id}',                   'ItemController@edit'                   )->name('reason');
+    Route::post         ('/update/{id}',                 'ItemController@update'                 )->name('reason_update');
+    Route::get          ('/destroy/{id}',                'ItemController@destroy'                )->name('reason_update');
+});
+
 // ANNOUNCEMENT CONTROLLER
 Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'announcement'], function (){
     Route::get          ('/',                            'AnnouncementController@index'           )->name('reason');
@@ -148,6 +157,7 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'cashier'], functio
     Route::get          ('/destroy/{id}',                'CashierController@destroy'            )->name('reason_update');
     Route::get          ('/redraw/{id}',                 'CashierController@redraw'             )->name('reason_update');
     Route::get          ('/printReceipt/{id}',           'CashierController@printReceipt'       )->name('reason_update');
+    Route::get          ('/item/{id}',                   'CashierController@item'               )->name('reason_update');
 });
 
 // RECEIPT CONTROLLER

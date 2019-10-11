@@ -40,6 +40,7 @@
                     <li><a href="{{ url('announcement') }}">Announcement</a></li>
                     <li><a href="{{ url('project') }}">Project</a></li>
                     <li><a href="{{ url('kagawad') }}">Brgy Official</a></li>
+                    <li><a href="{{ url('contact') }}">Contact Us</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-cogs"></i> Transaction <span class="fa fa-chevron-down"></span></a>
@@ -52,6 +53,7 @@
                   <ul class="nav child_menu">
                     <li><a href="{{ url('incident-type') }}">Type of Incident</a></li>
                     <li><a href="{{ url('position') }}">Position</a></li>
+                    <li><a href="{{ url('item') }}">Item</a></li>
                   </ul>
                 </li>
             @endif

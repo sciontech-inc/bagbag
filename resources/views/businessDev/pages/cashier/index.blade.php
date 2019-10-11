@@ -27,7 +27,12 @@
                  <div class="form-group">
                   <label class="control-label col-md-1 col-sm-1 col-xs-12">Discount<span class="required"></label>
                   <div class="col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" id="discount" name="dicount" required="required" class="form-control col-md-7 col-xs-12" style="margin-bottom: 17px" value="0" maxlength="60">
+                    <select name="discount_type" id="discount_type" class="form-control col-md-7 col-xs-12" style="margin-bottom: 17px">
+                        <option selected disabled>Choose Discount</option>
+                        <option value="PWD">PWD</option>
+                        <option value="SENIOR">Senior</option>
+                    </select>
+                    <input type="hidden" id="discount" name="discount" required="required" value="0" class="form-control col-md-7 col-xs-12" disabled maxlength="60">
                   </div>
                  </div>
                  <br>
@@ -97,21 +102,26 @@
                        <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Item<span class="required"></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="item" name="item" required="required" class="form-control col-md-7 col-xs-12">
+                          <select name="item" id="item" class="form-control col-md-7 col-xs-12">
+                              <option disabled selected>Choose Item</option>
+                              @foreach ($items as $item)
+                                  <option value="{{$item->item}}">{{$item->item}}</option>
+                              @endforeach
+                          </select>
                           <input type="hidden" id="id" name="id" required="required" class="form-control col-md-7 col-xs-12" disabled>
                         </div>
                        </div>
+                       <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Price</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" id="price" name="price" required="required" class="form-control col-md-7 col-xs-12" maxlength="120" disabled>
+                        </div>
+                      </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="number" id="quantity" name="quantity" required="required" class="form-control col-md-7 col-xs-12" maxlength="120">
                             </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Price</label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="number" id="price" name="price" required="required" class="form-control col-md-7 col-xs-12" maxlength="120">
-                          </div>
                         </div>
                         <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Total</label>
@@ -193,6 +203,7 @@
     }
     // AJAX STORE DATA
     function add() {
+        
         $.ajax({
             url: '/cashier/save',
             method: 'get',
@@ -205,6 +216,7 @@
                 tin: $('#tin').val(),
                 resident: $('#resident').val(),
                 discount: $('#discount').val(),
+                discount_type: $('#discount_type').val(),
                 subtotal: $('#subtotal').val(),
                 total_amount: $('#total-amount').val(),
                 pay_amount: $('#pay-amount').val(),
@@ -386,6 +398,16 @@
                 }
             });
         } 
+    })
+
+    $('#item').change(function(){
+        $.ajax({
+            url: '/cashier/item/' + $('#item').val(),
+            method: 'get',
+            success: function(data) {
+                $('#price').val(data.item.amount);
+            }
+        });
     })
 })
 

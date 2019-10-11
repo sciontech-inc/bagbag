@@ -21,6 +21,7 @@
     @include('frontend.pages.index')
     @include('frontend.pages.mission')
     @include('frontend.pages.events')
+    @include('frontend.pages.contact')
     @include('frontend.pages.announcement')
     @include('frontend.pages.projects')
 
