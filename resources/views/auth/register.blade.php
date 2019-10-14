@@ -283,4 +283,16 @@
         </div>
     </div>
 </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+   $(document).ready(function() {
+    $('#birthday').change(function(){
+        var birth = this.value;
+        dob = new Date(birth.toString);
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+        $('#age').val(age);
+    })
+   })
+</script>
 @endsection

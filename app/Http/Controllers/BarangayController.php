@@ -25,10 +25,11 @@ class BarangayController extends Controller
         $announcements = Announcement::orderBy('id')->get();
         $projects = Project::orderBy('id')->get();
         $schools = School::orderBy('id')->get();
+        $schoolCount = $schools->count();
         $queues = QueueNumber::with('user')->orderBy('id')->get();
         $queue = QueueNumber::with('user')->where('status', '0n-Queue')->orderBy('created_at')->limit(1)->get();
 
-        return view('frontend.master.template',compact('mission','events','announcements','projects', 'queues', 'queue', 'school'));
+        return view('frontend.master.template',compact('mission','events','announcements','projects', 'queues', 'queue', 'schools', 'schoolCount'));
     }
 
     /**

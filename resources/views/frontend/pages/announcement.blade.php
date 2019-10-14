@@ -17,7 +17,7 @@
         @foreach ($announcements as $key => $announcement)
             @if ($key === 0)
                     <div class="item active">
-                        <img src="img/upcoming_announcement_1.png" alt="Los Angeles" style="width:100%;">
+                        <img src="{{asset('app/public/images/'.$announcement->image)}}" alt="Los Angeles" style="width:100%;">
                         <div class="carousel-caption text-white" >
                         <h3 style="color:white">{{$announcement->title}}</h3>
                         <p style="color:white">{{$announcement->description}}</p>
@@ -26,7 +26,7 @@
                     </div>
             @else
                     <div class="item">
-                        <img src="img/upcoming_announcement_1.png" alt="Los Angeles" style="width:100%;">
+                        <img src="{{asset('app/public/images/'.$announcement->image)}}" alt="Los Angeles" style="width:100%;">
                         <div class="carousel-caption">
                         <h3 style="color:white">{{$announcement->title}}</h3>
                         <p style="color:white">{{$announcement->description}}</p>

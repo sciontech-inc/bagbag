@@ -23,7 +23,7 @@ class ProjectController extends Controller
 
         $image = $request->file('image');
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(storage_path('app/public/images'), $new_name);
+        $image->move(public_path('app/public/images'), $new_name);
 
         $incident_type = new Project([
             'title' => $request->title,

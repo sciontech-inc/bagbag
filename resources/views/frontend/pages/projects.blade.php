@@ -1,32 +1,52 @@
-<section class="blog_part section_padding project">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-5">
-                <div class="section_tittle text-center">
-                    <h4>Projects</h4>
-                    <h2>Barangay Bagbag previous and future Projects</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            @forelse ($projects as $project)
-                <div class="col-sm-6 col-lg-4 col-xl-4">
-                    <div class="single-home-blog d-none d-sm-block d-lg-none">
-                        <div class="card">
-                            <img src="img/blog/blog_4.png" class="card-img-top" alt="blog">
-                            <div class="card-body">
-                                <span class="dot">{{$project->date}}</span>
-                                <a href="blog.html">
-                                    <h5 class="card-title">{{$project->description}}</h5>
-                                </a>
-                                <a href=""></a>
-                            </div>
-                        </div>
+<br><br><div class="container">
+    <h2 class="text-center">PROJECTS</h2>
+    <div id="projectCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+
+    <ol class="carousel-indicators">
+    @foreach ($projects as $key => $project)
+        @if ($key === 0)
+            <li data-target="#projectCarousel" data-slide-to="{{$key+1}}" class="active"></li>
+        @else
+            <li data-target="#projectCarousel" data-slide-to="{{$key+1}}"></li>
+        @endif
+    @endforeach
+    </ol>
+
+    <div class="carousel-inner">
+    @foreach ($projects as $key => $project)
+        @if ($key === 0)
+                <div class="item active">
+                    <img src="{{asset('app/public/images/'.$project->image)}}" alt="Los Angeles" style="width:100%;">
+                    <div class="carousel-caption text-white" >
+                    <h3 style="color:white">{{$project->title}}</h3>
+                    <p style="color:white">{{$project->date}}</p>
+                    <p style="color:white">{{date('M-d-Y', strtotime($project->description))}} </p>
                     </div>
                 </div>
-            @empty
-                <h4 class="text-center" style="color:orange">NO PROJECTS!</h4>
-            @endforelse
-        </div>
+        @else
+                <div class="item">
+                    <img src="{{asset('app/public/images/'.$project->image)}}" alt="Los Angeles" style="width:100%;">
+                    <div class="carousel-caption">
+                    <h3 style="color:white">{{$project->title}}</h3>
+                    <p style="color:white">{{$project->date}}</p>
+                    <p style="color:white">{{date('M-d-Y', strtotime($project->description))}}</p>
+                    </div>
+                </div>
+        @endif
+    @endforeach
     </div>
-</section>
+        
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#projectCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#projectCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<br>
+<br>

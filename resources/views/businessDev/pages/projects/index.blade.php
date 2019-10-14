@@ -33,7 +33,7 @@
                         <td>{{$project->title}}</td>
                         <td>{{$project->description}}</td>
                         <td>{{$project->date}}</td>
-                        <td width="30px"><img  style="width:100% !important" src="{{asset('storage/images/'.$project->image)}}" alt=""></td>
+                        <td width="30px"><img  style="width:100% !important" src="{{asset('app/public/images/'.$project->image)}}" alt=""></td>
                         <td>
                             <div class="form-group" style="display:inline-flex">
                                     <a class="btn btn-success btn-sm mr-1 edit" title="Edit" data-toggle="modal" data-target=".add-modal" id={{$project->id}}><i class="fa fa-edit"></i></a>
