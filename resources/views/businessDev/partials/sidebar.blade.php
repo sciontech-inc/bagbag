@@ -41,6 +41,7 @@
                     <li><a href="{{ url('project') }}">Project</a></li>
                     <li><a href="{{ url('kagawad') }}">Brgy Official</a></li>
                     <li><a href="{{ url('contact') }}">Contact Us</a></li>
+                    <li><a href="{{ url('school') }}">School</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-cogs"></i> Transaction <span class="fa fa-chevron-down"></span></a>

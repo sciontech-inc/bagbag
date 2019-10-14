@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mission;
 use App\Event;
 use App\Announcement;
+use App\School;
 use App\Project;
 use App\QueueNumber;
 use Carbon\Carbon;
@@ -23,10 +24,11 @@ class BarangayController extends Controller
         $events = Event::orderBy('id')->get();
         $announcements = Announcement::orderBy('id')->get();
         $projects = Project::orderBy('id')->get();
+        $schools = School::orderBy('id')->get();
         $queues = QueueNumber::with('user')->orderBy('id')->get();
         $queue = QueueNumber::with('user')->where('status', '0n-Queue')->orderBy('created_at')->limit(1)->get();
 
-        return view('frontend.master.template',compact('mission','events','announcements','projects', 'queues', 'queue'));
+        return view('frontend.master.template',compact('mission','events','announcements','projects', 'queues', 'queue', 'school'));
     }
 
     /**

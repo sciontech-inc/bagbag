@@ -56,6 +56,15 @@ Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'item'], function (
     Route::get          ('/destroy/{id}',                'ItemController@destroy'                )->name('reason_update');
 });
 
+// SCHOOL CONTROLLER
+Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'school'], function (){
+    Route::get          ('/',                            'SchoolController@index'                  )->name('reason');
+    Route::post         ('/save',                        'SchoolController@store'                  )->name('reason');
+    Route::get          ('/edit/{id}',                   'SchoolController@edit'                   )->name('reason');
+    Route::post         ('/update/{id}',                 'SchoolController@update'                 )->name('reason_update');
+    Route::get          ('/destroy/{id}',                'SchoolController@destroy'                )->name('reason_update');
+});
+
 // ANNOUNCEMENT CONTROLLER
 Route::group(['middleware' => 'AdminMiddleware', 'prefix' => 'announcement'], function (){
     Route::get          ('/',                            'AnnouncementController@index'           )->name('reason');

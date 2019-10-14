@@ -1,24 +1,50 @@
-<section class="about_part recreational_part announcement">
-    @forelse ($announcements as $announcement)
-         <div class="container-fluid">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-6 offset-xl-1 col-xl-4">
-                    <div class="about_text">
-                        <h4>ANNOUNCEMENT</h4>
-                        <h2>{{$announcement->title}}</h2>
-                        <p>{{$announcement->description}}</p>
+<div class="container">
+        <h2 class="text-center">ANNOUNCEMENT</h2>
+        <div id="announcementCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+
+        <ol class="carousel-indicators">
+        @foreach ($announcements as $key => $announcement)
+            @if ($key === 0)
+                <li data-target="#announcementCarousel" data-slide-to="{{$key+1}}" class="active"></li>
+            @else
+                <li data-target="#announcementCarousel" data-slide-to="{{$key+1}}"></li>
+            @endif
+        @endforeach
+        </ol>
+
+        <div class="carousel-inner">
+        @foreach ($announcements as $key => $announcement)
+            @if ($key === 0)
+                    <div class="item active">
+                        <img src="img/upcoming_announcement_1.png" alt="Los Angeles" style="width:100%;">
+                        <div class="carousel-caption text-white" >
+                        <h3 style="color:white">{{$announcement->title}}</h3>
+                        <p style="color:white">{{$announcement->description}}</p>
+                        <p style="color:white">{{date('M-d-Y', strtotime($announcement->date))}} </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="about_img">
-                        <img src="img/recreational.png" alt="">
+            @else
+                    <div class="item">
+                        <img src="img/upcoming_announcement_1.png" alt="Los Angeles" style="width:100%;">
+                        <div class="carousel-caption">
+                        <h3 style="color:white">{{$announcement->title}}</h3>
+                        <p style="color:white">{{$announcement->description}}</p>
+                        <p style="color:white">{{date('M-d-Y', strtotime($announcement->date))}}</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+            @endif
+        @endforeach
         </div>
-    @empty
-        <h4 class="text-center" style="color:orange">NO ANNOUNCEMENT!</h4>
-    @endforelse
-    
-    
-</section>
+            
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#announcementCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#announcementCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+</div>
