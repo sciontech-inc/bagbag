@@ -10,6 +10,7 @@ class QueueNumber extends Model
         'queue_no',
         'date',
         'status',
+        'purpose',
         'user_id',
     ];
 

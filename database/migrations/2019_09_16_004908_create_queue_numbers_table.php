@@ -17,6 +17,7 @@ class CreateQueueNumbersTable extends Migration
             $table->bigIncrements('id');
             $table->string('queue_no');
             $table->string('date');
+            $table->string('purpose');
             $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

@@ -25,6 +25,7 @@ class QueueController extends Controller
             'queue_no' => $request->queue_no,
             'date' => $request->date,
             'status' => $request->status,
+            'purpose' => $request->purpose,
             'user_id' => Auth::user()->id,
         ]);
         $queue->save();

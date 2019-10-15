@@ -52,6 +52,7 @@
                             <th>Queue Number</th>
                             <th>Resident</th>
                             <th>Date</th>
+                            <th>Purpose</th>
                             <th>Status</th>
                           </tr>
                         </thead>
@@ -62,6 +63,7 @@
                                     <td>{{$queue->queue_no}}</td>
                                     <td>{{$queue->user->firstname . ' ' . $queue->user->surname}}</td>
                                     <td>{{$queue->date}}</td>
+                                    <td>{{$queue->purpose}}</td>
                                     <td>{{$queue->status}}</td>
                                   </tr>  
                             @endforeach
@@ -69,6 +71,34 @@
                     </table>
                 </div>
         </section>
+        <div class="modal fade add-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                      </button>
+                      <h4 class="modal-title" id="myModalLabel">Reason to Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                                      <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Description<span class="required"></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="purpose" id="purpose" class="form-control col-md-7 col-xs-12">
+                                                <option value="Barangay Clearance">Barangay Clearance</option>
+                                                <option value="Cedula">Cedula</option>
+                                                <option value="Blotter">Blotter</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary purpose-button">Submit</button>
+                    </div>
+                  </div>
+                </div>
+        </div>
 </body>
 <script>
         // REFERENCE CODE
@@ -77,7 +107,7 @@
             return str.length < max ? pad("0" + str, max) : str;
         }
         
-        function randomCode(route,code) {
+        function randomCode(route,code, purpose) {
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -107,6 +137,7 @@
                                 data: {
                                     queue_no: parts.join("-"),
                                     date: moment().format('MM-D-YYYY'),
+                                    purpose: purpose,
                                     status: 'On-Queue',
                                 },
                                 success: function(data) {
@@ -123,7 +154,12 @@
             location.reload();
         }, 5000);
         $('#queue').click(function(){
-            randomCode('queuingCode','QN');
+            $('.modal').modal('toggle');
+        })
+
+        $('.purpose-button').click(function(){
+            var purpose = $('#purpose').val();
+            randomCode('queuingCode','QN', purpose);
         })
     </script>
 </html>

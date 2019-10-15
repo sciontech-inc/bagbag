@@ -115,7 +115,7 @@
                         <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right">Age</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-sm-6 col-xs-12  ">
-                                    <input type="number" id="age" name="age" class="form-control @error('age') is-invalid @enderror" value="{{ old('age') }}" maxlength="60">
+                                    <input type="number" id="age" name="age" class="form-control @error('age') is-invalid @enderror" value="{{ old('age') }}" maxlength="60" readonly>
                                 </div>
                                 @error('age')
                                 <span class="invalid-feedback" role="alert">
@@ -288,7 +288,7 @@
    $(document).ready(function() {
     $('#birthday').change(function(){
         var birth = this.value;
-        dob = new Date(birth.toString);
+        dob = new Date(birth);
         var today = new Date();
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
         $('#age').val(age);
